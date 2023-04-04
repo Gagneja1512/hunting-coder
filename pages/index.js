@@ -2,6 +2,11 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
+
+{/* 
+  Stores the styles in an object , where the key is the name of the class and the value is unique identifier that is given by nextJs.
+*/}
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,10 +22,10 @@ export default function Home() {
 
     <nav className={styles.mainnav}>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Blogs</li>
-          <li>Contact</li>
+          <Link href='/'><li>Home</li></Link>
+          <Link href='/about' replace={true}><li>About</li></Link> {/* replace - Replace the current history state instead of adding a new url into the stack. Defaults to false*/ }
+          <Link href='/blog'><li>Blogs</li></Link>
+          <Link href='/contact'><li>Contact</li></Link>
         </ul>
       </nav>
       
