@@ -22,11 +22,11 @@ export default function Home() {
           } 
           
           h2 {
-            font-size : 38px ;
+            font-size : 28px ;
           }
 
           h3 {
-            font-size : 28px ;
+            font-size : 18px ;
           }
         `}
       </style>
@@ -37,15 +37,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-    <nav className={styles.mainnav}>
-        <ul>
-          <Link href='/'><li>Home</li></Link>
-          <Link href='/about' replace={true}><li>About</li></Link> {/* replace - Replace the current history state instead of adding a new url into the stack. Defaults to false*/ }
-          <Link href='/blog'><li>Blogs</li></Link>
-          <Link href='/contact'><li>Contact</li></Link>
-        </ul>
-      </nav>
       
       <main className={styles.main}>
 
@@ -60,6 +51,16 @@ export default function Home() {
 
         <div className='blogs'>
           <h2>Popular blogs</h2>
+          <div className='blogItem'>
+            <h3>Lorem Ipsum</h3>
+            <p>The things in the blogs are beautiful. Learning NextJs is beautiful.</p>
+          </div>
+
+          <div className='blogItem'>
+            <h3>Lorem Ipsum</h3>
+            <p>The things in the blogs are beautiful. Learning NextJs is beautiful.</p>
+          </div>
+
           <div className='blogItem'>
             <h3>Lorem Ipsum</h3>
             <p>The things in the blogs are beautiful. Learning NextJs is beautiful.</p>
