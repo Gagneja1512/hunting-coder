@@ -1,22 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/Blogpost.module.css"
 
-const Slug = () => {
-    const router = useRouter()
-    const {slug} = router.query
+const Slug = (props) => {
+    const [blog, setBlog] = useState(props.myBlog);
 
     return (
         <div className={styles.container}>
             <main className={styles.main}>
-                <h1>Title of the Blog : {slug}</h1>
+                <h1>{blog && blog.title}</h1>
                 <hr></hr>
                 <div>
-                    Hello there myself Aaditya Gagneja pursuing computer Science And engineering from National Institute of technology , hamirpur. Basically living in Hanumangarh , Rajasthan. My hobies are playing outdoor games and Computer games. 
+                    {blog && blog.content}
                 </div>
             </main>
         </div>
     )
+}
+
+export async function getServerSideProps(context) {
+
+    const { slug } = context.query
+    let data = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`)
+    const myBlog = await data.json() ;
+
+    return {
+        props : {myBlog}
+    }
+
 }
 
 export default Slug
