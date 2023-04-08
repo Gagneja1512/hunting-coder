@@ -4,6 +4,9 @@ import styles from "../../styles/Blogpost.module.css"
 import * as fs from 'fs'
 
 const Slug = (props) => {
+    function createMarkup(c) {
+        return {__html: c}
+    }
     const [blog, setBlog] = useState(props.myBlog);
 
     return (
@@ -11,9 +14,7 @@ const Slug = (props) => {
             <main className={styles.main}>
                 <h1>{blog && blog.title}</h1>
                 <hr></hr>
-                <div>
-                    {blog && blog.content}
-                </div>
+                {blog && <div dangerouslySetInnerHTML={createMarkup(blog.content)}></div>}
             </main>
         </div>
     )
@@ -44,3 +45,5 @@ export async function getStaticProps(context) {
 }
 
 export default Slug
+
+// Drawback of get Static Paths is no rendering of data again thus all use get Server Side.
